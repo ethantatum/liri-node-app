@@ -2,7 +2,8 @@ require('dotenv').config();
 
 const keys = require('./keys.js');
 
-//const spotify = new Spotify(keys.spotify);
+const Spotify = require('node-spotify-api');
+const spotify = new Spotify(keys.spotify);
 
 const axios = require('axios');
 
@@ -25,10 +26,12 @@ if(process.argv[2] === `concert-this`) {
     console.log(concertUrl);
     
     axios.get(concertUrl).then(
-        function(response) {
-          console.log(`Venue: ${response.definitions.VenueData.properties.name}`);
-          console.log(`Location: ${response.definitions.VenueData.properties.city}, ${response.venue.region}`);
-          console.log(`Date: ${response.definitions.EventData.properties.datetime}`);
+        function(response, body) {
+            console.log(response);
+            let userArtist = JSON.parse(body);
+          console.log(`Venue: ${userArtist.venue.name}`);
+          console.log(`Location: ${userArtist.venue.city}, ${userArtist.venue.region}`);
+          console.log(`Date: ${userArtist.datetime}`);
         }
       );
 }
