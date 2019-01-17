@@ -76,4 +76,30 @@ if(process.argv[2] === `movie-this`) {
       ).catch(function (error) {
         console.log(error);
       });
+} // ends movie-this function
+
+if(process.argv[2] === 'spotify-this-song') {
+    let track = '';
+    if(!process.argv[3]) {
+        track = `The Sign`;
+        console.log(`No one's gonna drag you up to get into the light where you belong...`);
+    }
+    else {
+        for(let i = 3; i < nodeArgs.length; i++) {
+            if(i > 3 && i < nodeArgs.length) {
+                track = `${track}+${nodeArgs[i]}`;
+            }
+            else {
+                track += nodeArgs[i];
+            }
+        }
+    }
+
+    spotify.search({type: `track`, query: track, limit: 1 })
+           .then(function(response) {
+               console.log(JSON.stringify(response, null, 2));
+           })
+           .catch(function(err) {
+               console.log(err);
+           });
 }
