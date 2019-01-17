@@ -6,11 +6,9 @@ const axios = require('axios');
 
 const moment = require('moment');
 
+const Spotify = require('node-spotify-api');
 
-// const Spotify = require('node-spotify-api');
-// const spotify = new Spotify(keys.spotify);
-// console.log(spotify);
-
+const spotify = new Spotify(keys.spotify);
 
 let nodeArgs = process.argv;
 
@@ -65,11 +63,6 @@ if(process.argv[2] === `movie-this`) {
 
     axios.get(movieUrl).then(
         function(response) {
-
-            // if(response.data[0] === undefined) {
-            //     console.log(`Oh no! No upcoming events for that artist...try another one!`);
-            // }
-            // else {
             console.log(`Title: ${response.data.Title}`);
             console.log(`Year: ${response.data.Year}`);
             console.log(`IMDB Rating: ${response.data.imdbRating}`);
