@@ -81,7 +81,7 @@ if(process.argv[2] === `movie-this`) {
 if(process.argv[2] === 'spotify-this-song') {
     let track = '';
     if(!process.argv[3]) {
-        track = `The Sign`;
+        track = `The Sign Ace of Base`;
         console.log(`No one's gonna drag you up to get into the light where you belong...`);
     }
     else {
@@ -97,7 +97,17 @@ if(process.argv[2] === 'spotify-this-song') {
 
     spotify.search({type: `track`, query: track, limit: 1 })
            .then(function(response) {
-               console.log(JSON.stringify(response, null, 2));
+               //console.log(JSON.stringify(response, null, 2));
+               console.log(`Artist: ${response.tracks.items[0].artists[0].name}`);
+               console.log(`Song Title: ${response.tracks.items[0].name}`);
+               console.log(`Album: ${response.tracks.items[0].album.name}`);
+               let preview;
+               if(response.tracks.items[0].preview_url === undefined || response.tracks.items[0].preview_url === null) {
+                   preview = `Sorry...no preview available for this song - blame the record label!`;
+               } else {
+                   preview = response.tracks.items[0].preview_url;
+               }
+               console.log(`Preview URL: ${preview}`);
            })
            .catch(function(err) {
                console.log(err);
