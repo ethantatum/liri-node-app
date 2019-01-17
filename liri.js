@@ -10,6 +10,8 @@ const Spotify = require('node-spotify-api');
 
 const spotify = new Spotify(keys.spotify);
 
+const fs = require(`fs`);
+
 let nodeArgs = process.argv;
 
 if(process.argv[2] === `concert-this`) {
@@ -112,4 +114,17 @@ if(process.argv[2] === 'spotify-this-song') {
            .catch(function(err) {
                console.log(err);
            });
-}
+} // ends spotify-this function
+
+if(process.argv[2] === 'do-what-it-says') {
+    fs.readFile('./random.txt', 'utf8', function(error, data) {
+        if(error) {
+            return console.log(error);
+        }
+        console.log(data);
+
+        let dataArr = data.split(',');
+
+        console.log(dataArr);
+    });
+} // ends do-what-it-says function
