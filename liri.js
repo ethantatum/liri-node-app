@@ -16,36 +16,55 @@ let nodeArgs = process.argv;
 
 let command = process.argv[2];
 
+let userInput = '';
+    for(let i = 3; i < nodeArgs.length; i++) {
+        if(i > 3 && i < nodeArgs.length) {
+            userInput = `${userInput}+${nodeArgs[i]}`;
+        }
+        else {
+            userInput += nodeArgs[i];
+        }
+    }
+
 switch (command) {
     case 'concert-this':
-    bandsInTown();
+    concertSearch(userInput);
     break;
 
     case 'spotify-this-song':
-    spotifySearch();
+    spotifySearch(userInput);
     break;
 
     case 'movie-this':
-    movieSearch();
+    movieSearch(userInput);
     break;
 
     case 'do-what-it-says':
     randomTxt();
     break;
+
+    default:
+    console.log(`
+    Oops! Please enter a valid command:
+    For concert info, enter 'concert-this' and an artist
+    For movie info, enter 'movie-this' and a movie name
+    For song info, enter 'spotify-this-song' and a song name
+    Or surprise yourself with a random response by entering 'do-what-it-says'!
+    `)
 }
 
-function bandsInTown() {
-    let artist = '';
-    for(let i = 3; i < nodeArgs.length; i++) {
-        if(i > 3 && i < nodeArgs.length) {
-            artist = `${artist}+${nodeArgs[i]}`;
-        }
-        else {
-            artist += nodeArgs[i];
-        }
-    }
+function concertSearch(userInput) {
+    // let artist = '';
+    // for(let i = 3; i < nodeArgs.length; i++) {
+    //     if(i > 3 && i < nodeArgs.length) {
+    //         artist = `${artist}+${nodeArgs[i]}`;
+    //     }
+    //     else {
+    //         artist += nodeArgs[i];
+    //     }
+    // }
 
-    let concertUrl = `https://rest.bandsintown.com/artists/${artist}/events?app_id=codingbootcamp`;
+    let concertUrl = `https://rest.bandsintown.com/artists/${userInput}/events?app_id=codingbootcamp`;
     
     axios.get(concertUrl).then(
         function(response) {
@@ -62,26 +81,27 @@ function bandsInTown() {
       ).catch(function (error) {
         console.log(error);
       });
-} // ends bandsInTown function
+} // ends concertSearch function
 
-function movieSearch() {
-    let movie = '';
-    if(!process.argv[3]) {
-        movie = `Mr.+Nobody`;
-        console.log(`Can't think of a movie to search for, huh? Here's one you might like!`);
+function movieSearch(userInput) {
+    // let movie = '';
+    if(!userInput) {
+         userInput = `Mr.+Nobody`;
+         console.log(`Can't think of a movie to search for, huh? Here's one you might like!
+         `);
     }
-    else {
-        for(let i = 3; i < nodeArgs.length; i++) {
-            if(i > 3 && i < nodeArgs.length) {
-                movie = `${movie}+${nodeArgs[i]}`;
-            }
-            else {
-                movie += nodeArgs[i];
-            }
-        }
-    }
+    // else {
+    //     for(let i = 3; i < nodeArgs.length; i++) {
+    //         if(i > 3 && i < nodeArgs.length) {
+    //             movie = `${movie}+${nodeArgs[i]}`;
+    //         }
+    //         else {
+    //             movie += nodeArgs[i];
+    //         }
+    //     }
+    // }
 
-    let movieUrl = `http://www.omdbapi.com/?t=${movie}&y=&plot=short&apikey=trilogy`;
+    let movieUrl = `http://www.omdbapi.com/?t=${userInput}&y=&plot=short&apikey=trilogy`;
 
     axios.get(movieUrl).then(
         function(response) {
@@ -100,24 +120,25 @@ function movieSearch() {
       });
 } // ends movieSearch function
 
-function spotifySearch() {
-    let track = '';
-    if(!process.argv[3]) {
-        track = `The Sign Ace of Base`;
-        console.log(`No one's gonna drag you up to get into the light where you belong...`);
+function spotifySearch(userInput) {
+    //let track = '';
+    if(!userInput) {
+        userInput = `The Sign Ace of Base`;
+        console.log(`Uh-oh, you didn't input a song name! That's OK though, because I saw it - and it opened up my eyes...
+        `);
     }
-    else {
-        for(let i = 3; i < nodeArgs.length; i++) {
-            if(i > 3 && i < nodeArgs.length) {
-                track = `${track}+${nodeArgs[i]}`;
-            }
-            else {
-                track += nodeArgs[i];
-            }
-        }
-    }
+    // else {
+    //     for(let i = 3; i < nodeArgs.length; i++) {
+    //         if(i > 3 && i < nodeArgs.length) {
+    //             track = `${track}+${nodeArgs[i]}`;
+    //         }
+    //         else {
+    //             track += nodeArgs[i];
+    //         }
+    //     }
+    // }
 
-    spotify.search({type: `track`, query: track, limit: 1 })
+    spotify.search({type: `track`, query: userInput, limit: 1 })
            .then(function(response) {
                //console.log(JSON.stringify(response, null, 2));
                console.log(`Artist: ${response.tracks.items[0].artists[0].name}`);
@@ -141,10 +162,26 @@ function randomTxt() {
         if(error) {
             return console.log(error);
         }
-        console.log(data);
+        //console.log(data);
 
         let dataArr = data.split(',');
 
-        console.log(dataArr);
+        //console.log(dataArr);
+
+        if(dataArr[0] === 'spotify-this-song') {
+            let textSong = dataArr[1];
+            console.log(textSong);
+            spotifySearch(textSong);
+        }
+        else if(dataArr[0] === 'concert-this') {
+            let textArtist = dataArr[1];
+            console.log(textArtist);
+            concertSearch(textArtist);
+        }
+        else if(dataArr[0] === 'movie-this') {
+            let textMovie = dataArr[1];
+            console.log(textMovie);
+            movieSearch(textMovie);
+        }
     });
 } // ends randomTxt function
