@@ -14,7 +14,27 @@ const fs = require(`fs`);
 
 let nodeArgs = process.argv;
 
-if(process.argv[2] === `concert-this`) {
+let command = process.argv[2];
+
+switch (command) {
+    case 'concert-this':
+    bandsInTown();
+    break;
+
+    case 'spotify-this-song':
+    spotifySearch();
+    break;
+
+    case 'movie-this':
+    movieSearch();
+    break;
+
+    case 'do-what-it-says':
+    randomTxt();
+    break;
+}
+
+function bandsInTown() {
     let artist = '';
     for(let i = 3; i < nodeArgs.length; i++) {
         if(i > 3 && i < nodeArgs.length) {
@@ -42,9 +62,9 @@ if(process.argv[2] === `concert-this`) {
       ).catch(function (error) {
         console.log(error);
       });
-}
+} // ends bandsInTown function
 
-if(process.argv[2] === `movie-this`) {
+function movieSearch() {
     let movie = '';
     if(!process.argv[3]) {
         movie = `Mr.+Nobody`;
@@ -78,9 +98,9 @@ if(process.argv[2] === `movie-this`) {
       ).catch(function (error) {
         console.log(error);
       });
-} // ends movie-this function
+} // ends movieSearch function
 
-if(process.argv[2] === 'spotify-this-song') {
+function spotifySearch() {
     let track = '';
     if(!process.argv[3]) {
         track = `The Sign Ace of Base`;
@@ -114,9 +134,9 @@ if(process.argv[2] === 'spotify-this-song') {
            .catch(function(err) {
                console.log(err);
            });
-} // ends spotify-this function
+} // ends spotifySearch function
 
-if(process.argv[2] === 'do-what-it-says') {
+function randomTxt() {
     fs.readFile('./random.txt', 'utf8', function(error, data) {
         if(error) {
             return console.log(error);
@@ -127,4 +147,4 @@ if(process.argv[2] === 'do-what-it-says') {
 
         console.log(dataArr);
     });
-} // ends do-what-it-says function
+} // ends randomTxt function
