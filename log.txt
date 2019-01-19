@@ -1,0 +1,5 @@
+concert-this / Artist: Metallica / Venue: Verizon Arena / Location: North Little Rock AR United States / Date: 01 20 2019,
+            concert-this / Artist: Testament / Venue: Universiada Hall / Location: Sofia  Bulgaria / Date: 06 18 2019,
+            movie-this / Title: Blue Ruin / Year: 2013 / Plot: A mysterious outsider's quiet life is turned upside down when he returns to his childhood home to carry out an act of vengeance. Proving himself an amateur assassin, he winds up in a brutal fight to protect his estranged family.,
+            spotify-this-song / Artist: Temple Of The Dog / Song Title: Hunger Strike / Album: Temple Of The Dog,
+               
