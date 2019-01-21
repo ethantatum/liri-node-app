@@ -2,4 +2,13 @@ concert-this / Artist: Metallica / Venue: Verizon Arena / Location: North Little
             concert-this / Artist: Testament / Venue: Universiada Hall / Location: Sofia  Bulgaria / Date: 06 18 2019,
             movie-this / Title: Blue Ruin / Year: 2013 / Plot: A mysterious outsider's quiet life is turned upside down when he returns to his childhood home to carry out an act of vengeance. Proving himself an amateur assassin, he winds up in a brutal fight to protect his estranged family.,
             spotify-this-song / Artist: Temple Of The Dog / Song Title: Hunger Strike / Album: Temple Of The Dog,
-               
+               concert-this / Artist: The Fab Four / Venue: Mayo Civic Center Presentation Hall / Location: Rochester MN United States / Date: 01 18 2019,
+            concert-this / Artist: Mastodon / Venue: O2 Academy Birmingham / Location: Birmingham  United Kingdom / Date: 01 22 2019,
+            movie-this / Title: Mr. Nobody / Year: 2009 / Plot: A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.,
+            movie-this / Title: Green Room / Year: 2015 / Plot: A punk rock band is forced to fight for survival after witnessing a murder at a neo-Nazi skinhead bar.,
+            spotify-this-song / Artist: Ace of Base / Song Title: The Sign / Album: The Sign (US Album) [Remastered],
+               spotify-this-song / Artist: Temple Of The Dog / Song Title: Say Hello 2 Heaven / Album: Temple Of The Dog,
+               movie-this / Title: I Don't Feel at Home in This World Anymore. / Year: 2017 / Plot: When a depressed woman is burglarized, she finds a new sense of purpose by tracking down the thieves alongside her obnoxious neighbor. But they soon find themselves dangerously out of their depth against a pack of degenerate criminals.,
+            spotify-this-song / Artist: Backstreet Boys / Song Title: I Want It That Way / Album: The Hits--Chapter One,
+               concert-this / Artist: Lady Gaga / Venue: LADY GAGA ENIGMA / Location: Las Vegas NV United States / Date: 01 24 2019,
+            
