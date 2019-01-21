@@ -1,4 +1,13 @@
 # liri-node-app
+### The Liri Bot is a program written entirely in JavaScript that runs solely in the command line.
+### Users input one of a series of four commands: **concert-this**, **movie-this**, **spotify-this-song**, or **do-what-it-says**.
+
+### For the first three commands, following the initial command, users can either input additional information (an artist/band, movie, or song, respectively), or if no additional information is input, the program runs the command with provided default information. The program then outputs information on a concert, movie, or track to the console, and logs the user command and response to the "log.txt".
+
+### For the final command, the output to the command line is determined by the information in the "random.txt" file.
+
+### Below you can see screenshot examples of the functionality of the different commands, both with and without additional user information.
+
 
 ## concert-this with no user input
 ![](screen_captures/concert-this_noInput.JPG)
