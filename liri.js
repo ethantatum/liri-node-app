@@ -1,3 +1,4 @@
+// Requiring npm packages and files
 require('dotenv').config();
 
 const keys = require('./keys.js');
@@ -12,6 +13,7 @@ const spotify = new Spotify(keys.spotify);
 
 const fs = require(`fs`);
 
+// Caputuring user command and saving total user input by looping over process.argvs
 let nodeArgs = process.argv;
 
 let command = process.argv[2];
@@ -26,6 +28,7 @@ let userInput = '';
         }
     }
 
+// Switch statement that runs different functions based on user commands, or displays a default message if no command is entered
 switch (command) {
     case 'concert-this':
     concertSearch(userInput);
@@ -53,6 +56,7 @@ switch (command) {
     `)
 }
 
+// Function for concert-this command
 function concertSearch(userInput) {
     if(!userInput) {
         userInput = `The Fab Four`;
@@ -75,6 +79,7 @@ function concertSearch(userInput) {
             console.log(`Date: ${momentDate}`);
             let exportConcert = (`concert-this / Artist: ${response.data[0].lineup[0]} / Venue: ${response.data[0].venue.name} / Location: ${response.data[0].venue.city} ${response.data[0].venue.region} ${response.data[0].venue.country} / Date: ${momentDate},
             `);
+            // Exports command and response to log.txt
             fs.appendFile('log.txt', exportConcert, function(err) {
                 if(err) {
                     console.log(err);
@@ -92,6 +97,8 @@ function concertSearch(userInput) {
       });
 } // ends concertSearch function
 
+
+// Function for movie-this command
 function movieSearch(userInput) {
     if(!userInput) {
          userInput = `Mr.+Nobody`;
@@ -113,6 +120,7 @@ function movieSearch(userInput) {
             console.log(`Actors: ${response.data.Actors}`);
             let exportMovie = (`movie-this / Title: ${response.data.Title} / Year: ${response.data.Year} / Plot: ${response.data.Plot},
             `)
+            // Exports command and response to log.txt
             fs.appendFile('log.txt', exportMovie, function(err) {
                 if(err) {
                     console.log(err);
@@ -128,6 +136,8 @@ function movieSearch(userInput) {
       });
 } // ends movieSearch function
 
+
+// Function for spotify-this-song command
 function spotifySearch(userInput) {
     if(!userInput) {
         userInput = `The Sign Ace of Base`;
@@ -150,6 +160,7 @@ function spotifySearch(userInput) {
                console.log(`Preview URL: ${preview}`);
                let exportTrack = (`spotify-this-song / Artist: ${response.tracks.items[0].artists[0].name} / Song Title: ${response.tracks.items[0].name} / Album: ${response.tracks.items[0].album.name},
                `);
+               // Exports command and response to log.txt
                fs.appendFile('log.txt', exportTrack, function(err) {
                 if(err) {
                     console.log(err);
@@ -165,30 +176,25 @@ function spotifySearch(userInput) {
            });
 } // ends spotifySearch function
 
+// Function for do-what-it-says command
 function randomTxt() {
     fs.readFile('./random.txt', 'utf8', function(error, data) {
         if(error) {
             return console.log(error);
         }
-        //console.log(data);
 
         let dataArr = data.split(',');
 
-        //console.log(dataArr);
-
         if(dataArr[0] === 'spotify-this-song') {
             let textSong = dataArr[1];
-            console.log(textSong);
             spotifySearch(textSong);
         }
         else if(dataArr[0] === 'concert-this') {
             let textArtist = dataArr[1];
-            console.log(textArtist);
             concertSearch(textArtist);
         }
         else if(dataArr[0] === 'movie-this') {
             let textMovie = dataArr[1];
-            console.log(textMovie);
             movieSearch(textMovie);
         }
     });

@@ -16,6 +16,8 @@
 
 #### Below you can see screenshot examples of the functionality of the different commands, both with and without additional user information.
 
+### running the file with no command input &#9660;
+![](screen_captures/no-command.JPG)
 
 ### concert-this with no user input &#9660;
 ![](screen_captures/concert-this_noInput.JPG)
