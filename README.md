@@ -1,4 +1,4 @@
-# liri-node-app
+![](./liri-bot.jpg)
 #### The Liri Bot is a program written entirely in JavaScript that runs solely in the command line.
 #### Users input one of a series of four commands: *concert-this*, *movie-this*, *spotify-this-song*, or *do-what-it-says*.
 
