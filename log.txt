@@ -18,4 +18,11 @@ concert-this / Artist: Metallica / Venue: Verizon Arena / Location: North Little
             spotify-this-song / Artist: Ace of Base / Song Title: The Sign / Album: The Sign (US Album) [Remastered],
                spotify-this-song / Artist: Prong / Song Title: Snap Your Fingers, Snap Your Neck / Album: Cleansing,
                concert-this / Artist: Lady Gaga / Venue: LADY GAGA ENIGMA / Location: Las Vegas NV United States / Date: 01 24 2019,
+            concert-this / Artist: The Fab Four / Venue: The Fab Four: The Ultimate Tribute / Location: Saint Charles MO United States / Date: 10 04 2019,
+            concert-this / Artist: Trivium / Venue: Good Things Festival, Melbourne / Location: Flemington  Australia / Date: 12 06 2019,
+            movie-this / Title: Mr. Nobody / Year: 2009 / Plot: A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.,
+            movie-this / Title: The Monster / Year: 2016 / Plot: A mother and daughter must confront a terrifying monster when they break down on a deserted road.,
+            spotify-this-song / Artist: Ace of Base / Song Title: The Sign / Album: The Sign (US Album) [Remastered],
+               spotify-this-song / Artist: Marc E. Bassy / Song Title: Trial By Fire / Album: PMD,
+               concert-this / Artist: Lady Gaga / Venue: LADY GAGA ENIGMA / Location: Las Vegas NV United States / Date: 10 17 2019,
             
